@@ -18,7 +18,9 @@ app.use(express.static("public"));
 
 app.set('view engine', 'ejs');
 
-mongoose.connect("mongodb+srv://admin-akshit:Test123@cluster0.vtol8ju.mongodb.net/todoListDB");
+// mongoose.connect("mongodb+srv://admin-akshit:Test123@cluster0.vtol8ju.mongodb.net/todoListDB");
+
+mongoose.connect("mongodb://localhost:27017/todoListDB");
 
 const itemsSchema = {
     name: String
@@ -53,23 +55,25 @@ const List = mongoose.model("list", listSchema);
 
 app.get("/",function(req,res){
     // const day = date.getDate();
-    // Item.find({},function(err, foundItems){
-    //     if(foundItems.length===0){
-    //         Item.insertMany(defaultItems, function(err){
-    //             if(err)
-    //                 console.log(err);
-    //             else{
-    //                 // mongoose.connection.close();
-    //                 console.log("Inserted successfully");
-    //             }
-    //         })   
-    //         res.redirect("/");        
-    //     }        
-    //     else{
-            // console.log(dbItems);
+    Item.find({},function(err, foundItems){
+        // if(foundItems.length===0){
+            // Item.insertMany(defaultItems, function(err){
+            //     if(err)
+            //         console.log(err);
+            //     else{
+            //         // mongoose.connection.close();
+            //         console.log("Inserted successfully");
+            //     }
+            // })   
+            // res.redirect("/");        
+        // } 
+        if(err)
+            console.log(err);       
+        else{
+            // console.log(foundItems);
             res.render("list",{listTitle: "Today", newItem:foundItems});
-        // }
-    // })
+        }
+    })
 
 })
 
