@@ -18,9 +18,9 @@ app.use(express.static("public"));
 
 app.set('view engine', 'ejs');
 
-// mongoose.connect("mongodb+srv://admin-akshit:Test123@cluster0.vtol8ju.mongodb.net/todoListDB");
+mongoose.connect("mongodb+srv://admin-akshit:Test123@cluster0.vtol8ju.mongodb.net/todoListDB");
 
-mongoose.connect("mongodb://localhost:27017/todoListDB");
+// mongoose.connect("mongodb://localhost:27017/todoListDB");
 
 const itemsSchema = {
     name: String
