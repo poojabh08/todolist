@@ -26,21 +26,23 @@ const itemsSchema = {
 
 const Item = mongoose.model("item", itemsSchema);
 
-const item1 = new Item({
-    name: "Bring Food"
-})
+// const item1 = new Item({
+//     name: "Bring Food"
+// })
 
 
-const item2 = new Item({
-    name: "Cook Food"
-})
+// const item2 = new Item({
+//     name: "Cook Food"
+// })
 
 
-const item3 = new Item({
-    name: "Eat Food"
-})
+// const item3 = new Item({
+//     name: "Eat Food"
+// })
 
-const defaultItems = [item1,item2,item3] 
+// const defaultItems = [item1,item2,item3]
+
+defaultItems = [];
 
 const listSchema = {
     name: String,
@@ -51,23 +53,23 @@ const List = mongoose.model("list", listSchema);
 
 app.get("/",function(req,res){
     // const day = date.getDate();
-    Item.find({},function(err, foundItems){
-        if(foundItems.length===0){
-            Item.insertMany(defaultItems, function(err){
-                if(err)
-                    console.log(err);
-                else{
-                    // mongoose.connection.close();
-                    console.log("Inserted successfully");
-                }
-            })   
-            res.redirect("/");        
-        }        
-        else{
+    // Item.find({},function(err, foundItems){
+    //     if(foundItems.length===0){
+    //         Item.insertMany(defaultItems, function(err){
+    //             if(err)
+    //                 console.log(err);
+    //             else{
+    //                 // mongoose.connection.close();
+    //                 console.log("Inserted successfully");
+    //             }
+    //         })   
+    //         res.redirect("/");        
+    //     }        
+    //     else{
             // console.log(dbItems);
             res.render("list",{listTitle: "Today", newItem:foundItems});
-        }
-    })
+        // }
+    // })
 
 })
 
