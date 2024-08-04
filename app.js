@@ -54,6 +54,7 @@ const listSchema = {
 const List = mongoose.model("list", listSchema);
 
 app.get("/",function(req,res){
+    console.log("fork, clone, pull request");
     // const day = date.getDate();
     Item.find({},function(err, foundItems){
         // if(foundItems.length===0){
